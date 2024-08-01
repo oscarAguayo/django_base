@@ -13,5 +13,11 @@ docker compose build
 Inside in an empty folder run the next command:
 
 ```shell
-wget https://raw.githubusercontent.com/oscarAguayo/django_base/main/start.sh && sudo chmod +x start.sh && sudo bash start.sh
+wget https://raw.githubusercontent.com/oscarAguayo/django_base/main/start.sh && sudo chmod +x start.sh && bash start.sh && rm -f start.sh
+```
+
+Now you can start your containerized django project with:
+
+```shell
+docker compose up
 ```

@@ -2,7 +2,7 @@
 
 # Start the environments in compose folder
 docker run -v ./compose:/compose oaguayo/django_base
-chown $USER:$USER -R compose/
+sudo chown $USER:$USER -R compose/
 
 echo "Please choose the environment to use [local | development] (default = local):"
 read ENVIRONMENT
