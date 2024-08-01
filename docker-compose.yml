@@ -1,0 +1,8 @@
+services:
+  django:
+    image: oaguayo/django_base:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - oaguayo/django_base:${TAG:-latest}

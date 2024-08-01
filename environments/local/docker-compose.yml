@@ -1,0 +1,24 @@
+services:
+  django:
+    image: ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:latest
+    build:
+      context: .
+      target: ${APP_ENV}
+      dockerfile: ./compose/Dockerfile
+      tags:
+        -  ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:${APP_VERSION}
+      args:
+        - APP_ENV=${APP_ENV}
+    # command: python manage.py runserver 0.0.0.0:${DJANGO_PORT}
+    container_name: ${DOCKER_APP_NAME}-app
+    volumes:
+      - ./compose:/compose
+      - ./django_${APP_ENV}:/django
+    restart: always
+    ports:
+      - ${DJANGO_PORT}:${DJANGO_PORT}
+    env_file:
+      - ./compose/${APP_ENV}/.env
+networks:
+  default:
+    name: ${DOCKER_APP_NAME}-network

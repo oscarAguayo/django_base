@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:16.3
+    container_name: ${DOCKER_APP_NAME}-db
+    restart: always
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  django:
+    build:
+      context: .
+      dockerfile: ./compose/${APP_ENV}/Dockerfile
+      args:
+        - APP_ENV=${APP_ENV}
+    # command: python manage.py runserver 0.0.0.0:${DJANGO_PORT}
+    image: ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:${APP_VERSION}
+    container_name: ${DOCKER_APP_NAME}-app
+    volumes:
+      - ./compose:/compose
+      - ./django_${APP_ENV}:/django
+    restart: always
+    ports:
+      - ${DJANGO_PORT}:${DJANGO_PORT}
+    depends_on:
+      - postgres
+    env_file:
+      - ./compose/${APP_ENV}/.env
+networks:
+  default:
+    name: ${DOCKER_APP_NAME}-network
