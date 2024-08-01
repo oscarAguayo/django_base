@@ -9,6 +9,14 @@ read ENVIRONMENT
 if [ -z "$ENVIRONMENT" ]; then
 	ENVIRONMENT=local
 fi
+
+# Verify that the environment exist
+dirs=$(ls -d compose/*/)
+if [[ "$dirs" != *"compose/$ENVIRONMENT/"* ]]; then
+	echo "The specified environment not exist"
+	exit 1
+fi
+
 echo "Please write the name of the app:"
 read APP_NAME
 if [ -z "$APP_NAME" ]; then
@@ -22,14 +30,9 @@ if [ -z "$DOCKER_USERNAME" ]; then
 	exit 1
 fi
 
-# Verify that the environment exist
-dirs=$(ls -d compose/*/)
-if [[ "$dirs" == *"compose/$ENVIRONMENT/"* ]]; then
-	cp compose/$ENVIRONMENT/.env.example compose/$ENVIRONMENT/.env
-	sed -i "s/^APP_NAME=.*/APP_NAME=\"$APP_NAME\"/" compose/$ENVIRONMENT/.env
-	sed -i "s/^DOCKER_USERNAME=.*/DOCKER_USERNAME=\"$DOCKER_USERNAME\"/" compose/$ENVIRONMENT/.env
-	source compose/$ENVIRONMENT/.env
-	bash compose/use_environment.sh $ENVIRONMENT
-else
-	echo "The specified environment not exist";
-fi
+# Edit the environment vars
+cp compose/$ENVIRONMENT/.env.example compose/$ENVIRONMENT/.env
+sed -i "s/^APP_NAME=.*/APP_NAME=\"$APP_NAME\"/" compose/$ENVIRONMENT/.env
+sed -i "s/^DOCKER_USERNAME=.*/DOCKER_USERNAME=\"$DOCKER_USERNAME\"/" compose/$ENVIRONMENT/.env
+source compose/$ENVIRONMENT/.env
+bash compose/use_environment.sh $ENVIRONMENT
