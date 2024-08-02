@@ -21,3 +21,15 @@ Now you can start your containerized django project with:
 ```shell
 docker compose up
 ```
+
+Change the permission of the `django_<environment>` with the command:
+
+```shell
+sudo chown $USER:$USER -R django_<environment>
+```
+
+For example:
+
+```shell
+sudo chown $USER:$USER -R django_local
+```
