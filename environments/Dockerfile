@@ -10,10 +10,9 @@ RUN rm -f requirements.txt
 COPY ./compose/${APP_ENV}/entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/entrypoint.sh
 VOLUME [ "/django" ]
-ENTRYPOINT [ "django-entrypoint.sh" ]
-
+ENTRYPOINT [ "entrypoint.sh" ]
 
 FROM base AS local
-ENTRYPOINT [ "entrypoint.sh" ]
+
 
 FROM base AS development
