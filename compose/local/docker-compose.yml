@@ -1,8 +1,4 @@
 services:
-  base:
-    image: oaguayo/django_base
-    volumes:
-      - ./compose:/compose
   django:
     image: ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:latest
     build:
@@ -22,8 +18,6 @@ services:
       - ${DJANGO_PORT}:${DJANGO_PORT}
     env_file:
       - ./compose/${APP_ENV}/.env
-    depends_on:
-      - base
 networks:
   default:
     name: ${DOCKER_APP_NAME}-network
