@@ -10,7 +10,7 @@ docker compose build
 
 ## How to implement
 
-Inside in an empty folder run the next command:
+Inside in the folder project run the next command:
 
 ```shell
 wget https://raw.githubusercontent.com/oscarAguayo/django_base/main/start.sh && sudo chmod +x start.sh && bash start.sh && rm -f start.sh
@@ -33,3 +33,9 @@ For example:
 ```shell
 sudo chown $USER:$USER -R django_local
 ```
+
+## VSCODE linter and environment packages
+
+
+
+

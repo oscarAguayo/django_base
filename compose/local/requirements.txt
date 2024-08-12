@@ -1,0 +1,2 @@
+-r /compose/base/requirements.txt
+ipython~=8.26.0

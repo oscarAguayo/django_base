@@ -1,8 +1,16 @@
 #!/bin/sh
 
 # Start the environments in compose folder
-docker run -v ./compose:/compose oaguayo/django_base
-sudo chown $USER:$USER -R compose/
+# Crear un contenedor temporal
+docker create --name tmp_container oaguayo/django_base
+
+# Copiar los archivos del contenedor a la máquina local
+docker cp tmp_container:/compose ./compose
+
+# Eliminar el contenedor temporal
+docker rm tmp_container
+# docker run -v ./compose:/compose oaguayo/django_base
+# sudo chown $USER:$USER -R compose/
 
 echo "Please choose the environment to use [local | development] (default = local):"
 read ENVIRONMENT

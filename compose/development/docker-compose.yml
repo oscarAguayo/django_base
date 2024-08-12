@@ -14,10 +14,9 @@ services:
   django:
     build:
       context: .
-      dockerfile: ./compose/${APP_ENV}/Dockerfile
+      dockerfile: ./compose/base/Dockerfile
       args:
         - APP_ENV=${APP_ENV}
-    # command: python manage.py runserver 0.0.0.0:${DJANGO_PORT}
     image: ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:${APP_VERSION}
     container_name: ${DOCKER_APP_NAME}-app
     volumes:
