@@ -27,8 +27,9 @@ if [[ "$dirs" == *"$1/"* ]]; then
 	# Change to destination path
 	cd "$DEST_DIR"
 
-	# Move .dockerignore file to root project
-	mv "$DIR/base/.dockerignore" "./"
+	# Create simbolic link to .dockerignore file
+	if [ -f "$DIR/base/.dockerignore" ]; then
+		ln -sf "$DIR/base/.dockerignore" "./.dockerignore"
 
 	# Create simbolic link to docker-compose.yml file
 	if [ -f "$DIR/$1/docker-compose.yml" ]; then
