@@ -8,12 +8,14 @@ if [ ! -f manage.py ]; then
 	cp -f /compose/$APP_ENV/settings.py config/settings.py
 	mkdir apps
 
-	if [ -n $DJANGO_SUPERUSER_USERNAME ]
+	if [ -n "${DJANGO_SUPERUSER_USERNAME:-}" ]
 	then
 		echo "Creating superuser..."
 		python manage.py makemigrations
 		python manage.py migrate
 		python manage.py createsuperuser --username $DJANGO_SUPERUSER_USERNAME --noinput # --email $DJANGO_SUPERUSER_EMAIL # Get values from env vars: https://docs.djangoproject.com/en/5.0/ref/django-admin/#envvar-DJANGO_SUPERUSER_PASSWORD
+	else
+		echo "SUPERUSER is not specified, create it manually..."
 	fi
 else
 	echo "Django project already exist..."
