@@ -2,7 +2,7 @@
 
 # Start the environments in compose folder
 # Crear un contenedor temporal
-docker create --name tmp_container oaguayo/django_base
+docker create --name tmp_container oaguayo/django_base:latest
 
 # Copiar los archivos del contenedor a la máquina local
 docker cp tmp_container:/compose ./compose

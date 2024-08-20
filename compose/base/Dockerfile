@@ -1,4 +1,4 @@
-FROM oaguayo/django_base AS base
+FROM oaguayo/django_base:latest AS base
 ARG APP_ENV
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
