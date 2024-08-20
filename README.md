@@ -22,10 +22,10 @@ Now you can start your containerized django project with:
 docker compose up
 ```
 
-Change the permission of the `django_<environment>` with the command:
+Change the permission of the `django_<APP_ENV>` with the command:
 
 ```shell
-sudo chown $USER:$USER -R django_<environment>
+sudo chown $USER:$USER -R django_<APP_ENV>
 ```
 
 For example:
@@ -36,6 +36,10 @@ sudo chown $USER:$USER -R django_local
 
 ## VSCODE linter and environment packages
 
+Create a virtual environment out of `django_<APP_ENV>` in the root of project with
 
+```shell
+python -m venv venv_<APP_ENV>
+```
 
-
+In local or development environment you can see the var `PYTHONPATH="django_${APP_ENV}"` that will help you tu use linters and local packages in your host machine.
