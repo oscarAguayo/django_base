@@ -12,7 +12,7 @@ RUN cd /compose/${APP_ENV} && pip install --no-cache-dir -r requirements.txt && 
 # to install requirements in host use `cd ./compose/<APP_ENV> && pip install -r requirements.txt`
 # RUN adduser -u 5678 --disabled-password --no-create-home  --gecos "" djangouser && chown -R djangouser /django
 # USER djangouser
-VOLUME [ "/compose", "/django" ]
+VOLUME [ "/django" ]
 ENTRYPOINT [ "entrypoint.sh" ]
 
 FROM base AS local

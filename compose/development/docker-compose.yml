@@ -20,7 +20,6 @@ services:
     image: ${DOCKER_USERNAME}/${DOCKER_APP_NAME}:${APP_VERSION}
     container_name: ${DOCKER_APP_NAME}-app
     volumes:
-      - ./compose:/compose
       - ./django_${APP_ENV}:/django
     restart: always
     ports:
