@@ -30,7 +30,7 @@ if [[ "$dirs" == *"$1/"* ]]; then
 	# Create simbolic link to .dockerignore file
 	if [ -f "$DIR/base/.dockerignore" ]; then
 		ln -sf "$DIR/base/.dockerignore" "./.dockerignore"
-
+	fi
 	# Create simbolic link to docker-compose.yml file
 	if [ -f "$DIR/$1/docker-compose.yml" ]; then
 		ln -sf "$DIR/$1/docker-compose.yml" "./docker-compose.yml"
