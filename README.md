@@ -30,6 +30,12 @@ Change the permission of the `src` with the command:
 sudo chown $USER:$USER -R src
 ```
 
+Now you can delete all files used for created the new project:
+
+```shell
+rm -fr ./compose/apps ./compose/base/settings
+```
+
 ## VSCODE linter and environment packages
 
 Create a virtual environment out of `src` in the root of project with
