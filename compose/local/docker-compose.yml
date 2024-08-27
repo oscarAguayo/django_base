@@ -11,7 +11,7 @@ services:
         - APP_ENV=${APP_ENV}
     container_name: ${DOCKER_APP_NAME}-app
     volumes:
-      - ./django_${APP_ENV}:/django
+      - ./src:/django
     restart: always
     ports:
       - ${DJANGO_PORT}:${DJANGO_PORT}

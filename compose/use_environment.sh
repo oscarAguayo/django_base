@@ -27,9 +27,11 @@ if [[ "$dirs" == *"$1/"* ]]; then
 	# Change to destination path
 	cd "$DEST_DIR"
 
-	# Create simbolic link to .dockerignore file
-	if [ -f "$DIR/base/.dockerignore" ]; then
-		ln -sf "$DIR/base/.dockerignore" "./.dockerignore"
+	# Create .dockerignore file for the environment specified
+	if [ -f "$DIR/base/.dockerignore" ] && [ -f "$DIR/$1/.dockerignore" ]; then
+		cat "$DIR/base/.dockerignore" "$DIR/$1/.dockerignore" > "./.dockerignore"
+	else
+		echo "The file: $DIR/$1/.dockerignore or $DIR/base/.dockerignore not exist."
 	fi
 	# Create simbolic link to docker-compose.yml file
 	if [ -f "$DIR/$1/docker-compose.yml" ]; then
