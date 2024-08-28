@@ -1,2 +1,3 @@
 **/settings/local.py
 **/settings/production.py
+**/src/db.sqlite3
