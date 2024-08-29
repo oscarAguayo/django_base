@@ -45,3 +45,13 @@ python -m venv venv_<APP_ENV>
 ```
 
 In local or development environment you can see the var `PYTHONPATH="src"` that will help you tu use linters and local packages in your host machine.
+
+## Git tag with same tag as Docker
+
+To tag the current version on git and push it to cloud use after `git add .` and `git commit -m "..."` `git push origin <branch>` commands.
+
+```shell
+source .env
+git tag -a "v$TAG" -m "Version $TAG"
+git push origin "v$TAG"
+```
