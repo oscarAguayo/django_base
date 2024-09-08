@@ -69,3 +69,9 @@ And then, create the app inside the container.
 ```shell
 docker compose exec <service_name> python manage.py startapp <app_name> <apps_folder>/<app_name>
 ```
+
+After create an app don't forget update the permissions in folder:
+
+```shell
+sudo chown $USER:$USER -R src
+```
