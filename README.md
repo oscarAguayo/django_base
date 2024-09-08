@@ -55,3 +55,17 @@ source .env
 git tag -a "v$TAG" -m "Version $TAG"
 git push origin "v$TAG"
 ```
+
+## Create a new app into container
+
+If you have a `apps_folder` for example `apps` where you put all the apps of project, you need to create first the folder `app_name`
+
+```shell
+mkdir -p src/apps/<app_name>
+```
+
+And then, create the app inside the container.
+
+```shell
+docker compose exec <service_name> python manage.py startapp <app_name> <apps_folder>/<app_name>
+```
