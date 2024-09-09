@@ -8,6 +8,16 @@ Django base configuration to implement in future projects with Django 5.0.x
 docker compose build --no-cache --push
 ```
 
+## Git tag with same tag as Docker
+
+To tag the current version on git and push it to cloud use after `git add .` and `git commit -m "..."` `git push origin <branch>` commands.
+
+```shell
+source .env
+git tag -a "v$TAG" -m "Version $TAG"
+git push origin "v$TAG"
+```
+
 ## How to implement
 
 Inside in the folder project run the next command:
@@ -34,26 +44,6 @@ Now you can delete all files used for created the new project:
 
 ```shell
 rm -fr ./compose/apps ./compose/base/settings
-```
-
-## VSCODE linter and environment packages
-
-Create a virtual environment out of `src` in the root of project with
-
-```shell
-python -m venv venv_<APP_ENV>
-```
-
-In local or development environment you can see the var `PYTHONPATH="src"` that will help you tu use linters and local packages in your host machine.
-
-## Git tag with same tag as Docker
-
-To tag the current version on git and push it to cloud use after `git add .` and `git commit -m "..."` `git push origin <branch>` commands.
-
-```shell
-source .env
-git tag -a "v$TAG" -m "Version $TAG"
-git push origin "v$TAG"
 ```
 
 ## Create a new app into container
@@ -90,3 +80,12 @@ And in the `<app_name>/apps.py` edit the `name` variable.
 name = 'apps.<app_name>'
 ```
 
+## VSCODE linter and environment packages
+
+Create a virtual environment out of `src` in the root of project with
+
+```shell
+python -m venv venv_<APP_ENV>
+```
+
+In local or development environment you can see the var `PYTHONPATH="src"` that will help you tu use linters and local packages in your host machine.
