@@ -75,3 +75,18 @@ After create an app don't forget update the permissions in folder:
 ```shell
 sudo chown $USER:$USER -R src
 ```
+
+Add the app into `setting/<environment>.py` file.
+
+```python
+...
+LOCAL_APPS = ['apps.<app_name>',]
+...
+```
+
+And in the `<app_name>/apps.py` edit the `name` variable.
+
+```python
+name = 'apps.<app_name>'
+```
+
