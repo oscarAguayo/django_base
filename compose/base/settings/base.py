@@ -21,6 +21,11 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY', 'secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = eval(getenv('DJANGO_DEBUG', False))
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+
+ALLOWED_HOSTS = eval(getenv('DJANGO_ALLOWED_HOSTS', []))
+
 # Application definition
 
 BASE_APPS = [

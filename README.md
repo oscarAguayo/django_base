@@ -80,12 +80,30 @@ And in the `<app_name>/apps.py` edit the `name` variable.
 name = 'apps.<app_name>'
 ```
 
-## VSCODE linter and environment packages
+## Run tests
+
+```shell
+docker compose exec django python manage.py test
+```
+
+## VSCODE linter in host and environment packages
 
 Create a virtual environment out of `src` in the root of project with
 
 ```shell
 python -m venv venv_<APP_ENV>
+```
+
+Activate virtual environment
+
+```shell
+source venv_<APP_ENV>/bin/activate
+```
+
+Install packages
+
+```shell
+cd compose/<APP_ENV> && pip install -r requirements.txt
 ```
 
 In local or development environment you can see the var `PYTHONPATH="src"` that will help you tu use linters and local packages in your host machine.
